@@ -1,0 +1,74 @@
+Example Use Case 
+
+🔍 1. Scan Common Ports (1–1024)
+bash - python main.py scanme.nmap.org
+This will:
+Scan scanme.nmap.org from port 1 to 1024
+Use default timeout (1 sec)
+Use 50 threads for faster scanning
+
+
+🔢 2. Scan Custom Port Range
+bash- python main.py scanme.nmap.org --start 20 --end 100
+This scans only ports from 20 to 100, useful for narrowing in on FTP, SSH, Telnet, SMTP, HTTP, etc.
+
+
+🔎 3. Show Closed Ports Too (Verbose Mode)
+bash - python main.py scanme.nmap.org --start 1 --end 100 --verbose
+Adds a line for every closed port to help you verify a full sweep.
+Output will include:
+scss
+[-] Port 21 is closed
+[-] Port 22 is closed
+[+] Port 80 (HTTP) is OPEN - Banner: Apache/2.4.1
+
+
+💾 4. Save Scan Results to a JSON File
+bash - python main.py scanme.nmap.org --start 20 --end 80 --save
+This saves the output to a file inside the /output folder like:
+bash - output/scan_scanme.nmap.org_20250405_174230.json
+Sample file content:
+[
+  {
+    "port": 22,
+    "service": "SSH",
+    "banner": "OpenSSH 7.9p1 Debian"
+  },
+  {
+    "port": 80,
+    "service": "HTTP",
+    "banner": "Apache/2.4.29 (Ubuntu)"
+  }
+]
+
+
+⚙️ 5. Increase Timeout (for slow networks)
+bash - python main.py scanme.nmap.org --start 1 --end 100 --timeout 3.0
+Sets socket timeout to 3 seconds instead of the default 1, in case you're scanning a slower server or dealing with latency.
+
+
+🚀 6. Increase/Decrease Threads
+bash - 
+python main.py scanme.nmap.org --threads 100
+Use 100 threads for very fast scanning (good for LAN or localhost). Use fewer if you're on a low-resource device or scanning over the internet.
+
+
+🧪 Full Power Combo Example
+bash - python main.py scanme.nmap.org --start 20 --end 100 --timeout 2.0 --threads 80 --verbose --save
+This will:
+Scan ports 20–100
+Use 80 threads
+Wait 2 seconds max per port
+Show both open and closed ports
+Save results to JSON file in /output
+
+
+
+
+⚠️ Notes
+This tool only performs TCP scans.
+UDP scanning is not supported (requires different socket behavior).
+Use responsibly—always have permission to scan a host.
+
+
+
