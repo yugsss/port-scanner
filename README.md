@@ -21,4 +21,4 @@ A lightweight, fast, and extensible Python-based port scanner that can scan a gi
   ├── utils.py # Host checking, saving, JSON loading 
   ├── common_ports.json # Known ports & services 
   ├── output/ # Output directory (auto-generated) 
-  └── README.md</pre>
+  └── README.md # This page</pre>
