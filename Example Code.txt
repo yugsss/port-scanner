@@ -1,5 +1,5 @@
 Example Use Case of Project
-
+ 
 🔍 1. Scan Common Ports (1–1024)
 bash - python main.py scanme.nmap.org
 This will:
